@@ -1,5 +1,6 @@
 #include <Arduino.h>
 
+#define SPEAKER 12
 #define ONE_WIRE_BUS 6
 #define STEPS_PER_REVOLUTION 2048
 //#define STEPS_PER_REVOLUTION 4096
@@ -30,19 +31,19 @@ typedef struct {
 
 // Array of tea steeping times and accompnaying index
 const steep steeping_presets[] = {
-  {1, {255, 255, 0}}, // Deep blue
-  {3, {0, 255, 0}}, // Purple
-  {5, {255, 0, 255}}, // Green
-  {10, {0, 255, 255}} // Red
+  {1, {0, 0, 255}}, // Deep blue
+  {3, {255, 0, 255}}, // Purple
+  {5, {0, 255, 0}}, // Green
+  {10, {255, 0, 0}} // Red
 };
 
 int selected_steep = 0; // Index for above array tracking selected steep time
 
 // Array of structs TODO: fine tune temperatures
 const temperature cooling_presets[] = {
-  {80.0, {0, 175, 255}}, // Bright Orange
-  {70.0, {55, 55, 255}}, // Cool Yellow
-  {60.0, {255, 125, 0}}  // Cool Blue
+  {80.0, {255, 80, 0}}, // Bright Orange
+  {70.0, {200, 200, 0}}, // Cool Yellow
+  {60.0, {0, 100, 255}}  // Cool Blue
 };
 
 int selected_cool = 0; // Index for above array tracking selected temperature
@@ -57,6 +58,7 @@ bool await_select(int &index, T (&presets)[N]) { // Read only presets
     delay(100); // Debounce
   }
 
+  Serial.print("Select Index: ");
   Serial.println(index);
 
   // Write to RGB LED with color presets
