@@ -41,9 +41,9 @@ int selected_steep = 0; // Index for above array tracking selected steep time
 
 // Array of structs TODO: fine tune temperatures
 const temperature cooling_presets[] = {
-  {80.0, {255, 80, 0}}, // Bright Orange
-  {70.0, {200, 200, 0}}, // Cool Yellow
-  {60.0, {0, 100, 255}}  // Cool Blue
+  {160.0, {255, 80, 0}}, // Bright Orange
+  {140.0, {200, 200, 0}}, // Cool Yellow
+  {130.0, {0, 100, 255}}  // Cool Blue
 };
 
 int selected_cool = 0; // Index for above array tracking selected temperature

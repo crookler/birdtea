@@ -34,7 +34,7 @@ void setup(void)
   stepper.step(STEPS_PER_REVOLUTION/4);
 
   // Wait for the user selected amount of time
-  //waitForSteep(steeping_presets[selected_steep].steep_time);
+  waitForSteep(steeping_presets[selected_steep].steep_time);
 
   // Raise neck and begin waiting for temperature (main loop)
   stepper.step(-STEPS_PER_REVOLUTION/4);
